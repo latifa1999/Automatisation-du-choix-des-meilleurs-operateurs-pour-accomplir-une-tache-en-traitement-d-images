@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Analyse</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&display=swap');
+        body{
+            font-family: 'Libre Baskerville', serif;
+        }
+        .main-sec{
+            position: relative;
+            height: 570px;
+        }
+        .sec-1{
+            height: 348px;
+            width: 105%;
+        }
+        .sec-2{
+            height: 347px;
+            width: 105%;
+        }
+        .img{
+            color: black; 
+            box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+            padding: 0;
+        }
+        .button{
+            box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+            /* box-shadow: 0px 0px 5px 0px grey;     */
+            padding-top: 10px;
+            padding-top: 15px;
+            text-align: center;
+        }
+        .button form input{
+            width: 95%;
+        }
+        .img-ref{
+            color: black;
+            padding: 0;
+            box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+            padding: 0;
+        }
+        .img-res{
+            padding: 0;
+            color: black;
+            box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+        }
+        .res{
+            color: black;
+            padding-top: 20px;
+            padding-left: 19px;
+            box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+        }
+        .res p{
+            color: tomato;
+            margin-left: 30px;
+        }
+        .link{
+            margin-left: 76%;
+        }
+        .main-sec a{
+            position: absolute;
+            top: 31rem;
+            left: 47%;
+        }
+        .text{
+            position: absolute;
+            top: 35%;
+            left: 42%;
+        }
+        .sectoin-global{
+            color: white;
+        }
+        .logo{
+            position: absolute;
+            top: 3px;
+        }
+        .Analyse {
+            margin-top: 10px;
+        }
+        .span{
+            padding-left: 6px;
+            background: antiquewhite;
+            padding-bottom: 6px;
+            padding-right: 6px;
+            border-radius: 0px 0px 17px 0px; 
+        }
+        .sec-1 span{
+            padding-left: 6px;
+            background: antiquewhite;
+            padding-bottom: 6px;
+            padding-right: 6px;
+            border-radius: 0px 0px 17px 0px;
+        }
+        .choiser-file input{
+            color: #fff;
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+        .file-upload-button input{
+            background-color: black;
+        }
+        .navbar-nav{
+            margin-left: -20px;
+        }
+        /* styele input file */
+        
+        .custom-file-input::-webkit-file-upload-button {
+          visibility: hidden;
+        }
+        .custom-file-input::before {
+          content: 'Choiser une image';
+          color: white;
+          font-family: 'Noto Serif', serif;
+          display: inline-block;
+          background-color: #6c757d;
+          border-color: #6c757d;
+          border-radius: 0.25rem;
+          padding: 9px 13px;
+          outline: none;
+          white-space: nowrap;
+          cursor: pointer;
+          width: 100%;
+          font-size: 19px;
+        }
+        .custom-file-input:hover::before {
+          border-color: black;
+        }
+        .custom-file-input:active {
+          outline: 0;
+        }
+        .custom-file-input:active::before {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .navbar-brand {
+            padding-left: 7px;;
+        }
+    </style>
+  </head>
+  <body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand"  href="/">Auto Opérateurs</a>
+                <div class="collapse navbar-collapse link" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Accueil</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="analyse.html">Analyse</a>
+                  </li>
+                </ul>
+            </div>
+            </div>
+          </nav>
+    </header>
+    <section class="Analyse">
+        <div class="sectoin-global row container-fluid">
+            <div class="col-2 button">
+                <form method="POST" action="/form" enctype="multipart/form-data">
+                    <input type="file" name="image" class="custom-file-input"><br><br>
+                    <input class="btn btn-secondary" name="but" value="Importer" type="submit"><br><br>
+                </form>
+                <form method="POST" action="/form-2" enctype="multipart/form-data">
+                    <input class="btn btn-secondary" value="Analyser" name="anl" type="submit">
+                </form>
+            </div>
+            <div class="col-10">
+                <section class="row sec-1 container-fluid">
+                    <div class="col-6 img">
+                        <span>Image Originale:</span><br>
+                        {% if image: %}
+                        <img style="width: 253px;" src="{{ url_for('static' , filename=image)}}">
+                        {% endif %}
+                    </div>
+                    <div class="col-6 img-ref">
+                        <span>Image Reference:</span><br>
+                        {% if image_ref: %}
+                        <img style="width: 253px;" src="{{ url_for('static' , filename=image_ref)}}">
+                        {% endif %}
+                    </div>
+                </section>
+                <section class="row sec-2 container-fluid">
+                    <div class="col-6 img-res">
+                        <span class="span">Image Resultat:</span><br>
+                        {% if image_res: %}
+                        <img style="width: 253px;" src="{{ url_for('static' , filename=image_res)}}">
+                        {% endif %}
+                    </div>
+                    <div class="col-6 res">
+                        <span>Meilleurs Combainison des Opérateurs:</span>
+                        <p>{{ action }}</p>
+                        <span>SSIM: </span>
+                        <p>{{ ssim }}</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+</body>
+</html>
